@@ -19,14 +19,12 @@ jobs:
       run: |
         Invoke-WebRequest https://raw.githubusercontent.com/cremans/secauto/main/DuplTwi.py -OutFile "C:\1Twitch\DuplTwi.py"
         Invoke-WebRequest https://raw.githubusercontent.com/cremans/AutoTwi/main/WinRAR.exe -OutFile "C:\1Twitch\WinRAR.exe"
-        Invoke-WebRequest https://raw.githubusercontent.com/cremans/AutoTwi/main/ffmpeg.zip -OutFile "C:\1Twitch\ffmpeg.zip"
+        Invoke-WebRequest https://raw.githubusercontent.com/cremans/AutoTwi/main/ffmpeg.rar -OutFile "C:\1Twitch\ffmpeg.rar"
     - name: Descomprimir Conver Video
       run: |
         cd "C:\1Twitch"
-        Expand-Archive ffmpeg.zip
-        Move-Item -Path "C:\1Twitch\ffmpeg\ffmpeg.exe" -Destination "C:\1Twitch"
-        Remove-Item "ffmpeg"
-        Remove-Item "ffmpeg.zip"
+        cmd /c WinRAR.exe e ffmpeg.rar
+        Remove-Item "ffmpeg.rar"
     - name: Ejecutando Auto
       run: |
         cd "C:\1Twitch"
